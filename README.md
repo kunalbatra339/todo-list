@@ -27,7 +27,7 @@ A modern, responsive, and feature-rich Todo Web Application built using **React.
 ---
 
 ## 🏗️ Project Structure
-
+`
 /todo-app
 │
 ├── /backend
@@ -49,5 +49,5 @@ A modern, responsive, and feature-rich Todo Web Application built using **React.
 ├── .gitignore                # Files/folders ignored by Git
 ├── README.md                 # Project documentation (you are reading this!)
 └── LICENSE                   # Project license (MIT)
-
+`
 
