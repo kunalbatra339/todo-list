@@ -26,13 +26,28 @@ A modern, responsive, and feature-rich Todo Web Application built using **React.
 
 ---
 
-## 📸 Screenshots
-
-| Light Mode  | Dark Mode  |
-|------------|------------|
-| ![Light](https://via.placeholder.com/300x200?text=Light+Mode) | ![Dark](https://via.placeholder.com/300x200?text=Dark+Mode) |
-
----
-
 ## 🏗️ Project Structure
+
+/todo-app
+│
+├── /backend
+│   ├── app.py                # Flask backend server
+│   └── requirements.txt      # Python dependencies (Flask, Flask-CORS, PyMongo)
+│
+├── /frontend
+│   ├── /public
+│   │   └── index.html        # Main HTML file
+│   │
+│   ├── /src
+│   │   ├── App.js            # React main component
+│   │   ├── App.css           # CSS Styling (Themes, Dark Mode, Responsiveness)
+│   │   └── index.js          # React entry point
+│   │
+│   ├── package.json          # Frontend dependencies (React, Axios, Confetti)
+│   └── package-lock.json     # Frontend dependency tree lock file
+│
+├── .gitignore                # Files/folders ignored by Git
+├── README.md                 # Project documentation (you are reading this!)
+└── LICENSE                   # Project license (MIT)
+
 
