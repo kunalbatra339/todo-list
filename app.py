@@ -8,7 +8,8 @@ app = Flask(__name__)
 CORS(app)
 
 # MongoDB Connection
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://kbatra339:3zre6Icx07XDcK0I@cluster0.wgcc4j6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+
 db = client['todo_db']
 users_collection = db['users']
 tasks_collection = db['tasks']
@@ -23,6 +24,11 @@ def serialize_task(task):
         'date': task.get('date', ''),    # new field
         'time': task.get('time', '')     # new field
     }
+
+@app.route('/')
+def home():
+    return 'Flask App is Running!'
+
 
 @app.route('/api/register', methods=['POST'])
 def register():

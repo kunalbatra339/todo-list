@@ -29,14 +29,14 @@ function App() {
   }, []);
 
   const fetchTasks = (userRoll) => {
-    fetch(`http://localhost:5000/api/todos/${userRoll}`)
+    fetch(`https://todo-list-5-bc98.onrender.com/api/todos/${userRoll}`)
       .then(res => res.json())
       .then(data => setTasks(data))
       .catch(err => console.error('Error fetching tasks:', err));
   };
 
   const handleLogin = () => {
-    fetch('http://localhost:5000/api/login', {
+    fetch('https://todo-list-5-bc98.onrender.com/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ roll_number: rollNumber, password })
@@ -54,7 +54,7 @@ function App() {
   };
 
   const handleRegister = () => {
-    fetch('http://localhost:5000/api/register', {
+    fetch('https://todo-list-5-bc98.onrender.com/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ roll_number: rollNumber, password })
@@ -81,7 +81,7 @@ function App() {
   const addTask = () => {
     const storedRollNumber = localStorage.getItem('rollNumber');
     if (input.trim() !== '' && storedRollNumber) {
-      fetch('http://localhost:5000/api/todo', {
+      fetch('https://todo-list-5-bc98.onrender.com/api/todo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -102,7 +102,7 @@ function App() {
 
   const deleteTask = (id) => {
     const storedRollNumber = localStorage.getItem('rollNumber');
-    fetch(`http://localhost:5000/api/todo/${id}`, {
+    fetch(`https://todo-list-5-bc98.onrender.com/api/todo/${id}`, {
       method: 'DELETE'
     })
       .then(() => fetchTasks(storedRollNumber));
@@ -110,7 +110,7 @@ function App() {
 
   const toggleTask = (id) => {
     const storedRollNumber = localStorage.getItem('rollNumber');
-    fetch(`http://localhost:5000/api/todo/${id}`, {
+    fetch(`https://todo-list-5-bc98.onrender.com/api/todo/${id}`, {
       method: 'PUT'
     }).then(() => {
       const updatedTasks = tasks.map(task =>
