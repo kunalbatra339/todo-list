@@ -239,11 +239,27 @@ function App() {
         ) : (
           tasks.map((todo, index) => (
             <li key={todo._id} className={todo.completed ? 'completed' : ''}>
-              <button onClick={() => moveTaskUp(index)} disabled={index === 0}>↑</button>
-              <button onClick={() => moveTaskDown(index)} disabled={index === tasks.length - 1}>↓</button>
-              {todo.task} — {todo.date} {todo.time}
-              <button onClick={() => toggleTask(todo._id)}>Toggle</button>
-              <button className="delete-btn" onClick={() => deleteTask(todo._id)}>Delete</button>
+              <div className="task-content">
+                <span className="task-text">{todo.task} — {todo.date} {todo.time}</span>
+              </div>
+              <div className="task-actions">
+                <button 
+                  className="move-btn move-up-btn" 
+                  onClick={() => moveTaskUp(index)} 
+                  disabled={index === 0}
+                >
+                  ↑
+                </button>
+                <button 
+                  className="move-btn move-down-btn" 
+                  onClick={() => moveTaskDown(index)} 
+                  disabled={index === tasks.length - 1}
+                >
+                  ↓
+                </button>
+                <button onClick={() => toggleTask(todo._id)}>Toggle</button>
+                <button className="delete-btn" onClick={() => deleteTask(todo._id)}>Delete</button>
+              </div>
             </li>
           ))
         )}

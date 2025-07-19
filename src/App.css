@@ -1,5 +1,6 @@
 /* App.css */
 
+
 /* General Body */
 body {
   margin: 0;
@@ -13,6 +14,7 @@ body {
   transition: background 0.5s ease;
 }
 
+
 /* Main App Container */
 .app-container {
   background: #ffffff;
@@ -25,12 +27,14 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+
 /* Heading */
 h1 {
   color: #333;
   margin-bottom: 20px;
   font-size: 28px;
 }
+
 
 /* Input Box and Buttons container */
 .input-container {
@@ -40,6 +44,7 @@ h1 {
   justify-content: center;
   flex-wrap: wrap; /* For mobile */
 }
+
 
 /* Input Fields */
 input[type="text"], input[type="password"], input[type="date"], input[type="time"] {
@@ -51,10 +56,12 @@ input[type="text"], input[type="password"], input[type="date"], input[type="time
   width: 65%;
 }
 
+
 input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="time"]:focus {
   border-color: #f8b500;
   box-shadow: 0 0 8px rgba(248, 181, 0, 0.5);
 }
+
 
 /* Buttons */
 button {
@@ -68,10 +75,12 @@ button {
   transition: all 0.3s ease;
 }
 
+
 button:hover {
   background-color: #e0a800;
   transform: scale(1.05);
 }
+
 
 /* Logout Button */
 .logout-btn {
@@ -79,9 +88,11 @@ button:hover {
   margin-bottom: 20px;
 }
 
+
 .logout-btn:hover {
   background-color: #e85c50;
 }
+
 
 /* Task List Styling */
 .task-list {
@@ -89,6 +100,7 @@ button:hover {
   padding: 0;
   margin: 0;
 }
+
 
 .task-list li {
   background-color: #fdf6e3;
@@ -103,9 +115,32 @@ button:hover {
   transition: transform 0.2s ease;
 }
 
+
 .task-list li:hover {
   transform: translateY(-3px);
 }
+
+
+/* Task Content and Actions Layout */
+.task-content {
+  flex: 1;
+  text-align: left;
+}
+
+
+.task-text {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 
 /* Completed Task */
 .completed {
@@ -113,6 +148,60 @@ button:hover {
   color: #155724;
   text-decoration: line-through;
 }
+
+
+/* Move Buttons */
+.move-btn {
+  background-color: #6c757d;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.move-btn:hover {
+  background-color: #5a6268;
+}
+
+
+.move-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+
+.move-btn:disabled:hover {
+  background-color: #ccc;
+  transform: none;
+}
+
+
+.move-up-btn {
+  background-color: #28a745;
+}
+
+
+.move-up-btn:hover {
+  background-color: #218838;
+}
+
+
+.move-down-btn {
+  background-color: #007bff;
+}
+
+
+.move-down-btn:hover {
+  background-color: #0056b3;
+}
+
 
 /* Toggle and Delete Buttons */
 .task-list button {
@@ -122,13 +211,16 @@ button:hover {
   border-radius: 6px;
 }
 
+
 .delete-btn {
   background-color: #ff6f61;
 }
 
+
 .delete-btn:hover {
   background-color: #e85c50;
 }
+
 
 /* Registration/Login toggle text */
 p {
@@ -138,15 +230,18 @@ p {
   cursor: pointer;
 }
 
+
 p:hover {
   text-decoration: underline;
 }
+
 
 /* --- DARK MODE --- */
 .dark-mode {
   background: #333333 !important;
   color: #f0f0f0;
 }
+
 
 .dark-mode input[type="text"],
 .dark-mode input[type="password"],
@@ -157,113 +252,160 @@ p:hover {
   border: 1px solid #888;
 }
 
+
 .dark-mode .task-list li {
   background-color: #555;
   color: #fff;
 }
+
 
 .dark-mode .completed {
   background-color: #2e7d32;
   color: #c8e6c9;
 }
 
+
 .dark-mode button {
   background-color: #888;
 }
+
 
 .dark-mode button:hover {
   background-color: #777;
 }
 
+
 .dark-mode .logout-btn {
   background-color: #d84315;
 }
+
 
 .dark-mode .logout-btn:hover {
   background-color: #bf360c;
 }
 
+
+.dark-mode .move-up-btn {
+  background-color: #388e3c;
+}
+
+
+.dark-mode .move-up-btn:hover {
+  background-color: #2e7d32;
+}
+
+
+.dark-mode .move-down-btn {
+  background-color: #1976d2;
+}
+
+
+.dark-mode .move-down-btn:hover {
+  background-color: #1565c0;
+}
+
+
 /* --- THEMES --- */
+
 
 /* Blue Theme */
 .blue .app-container {
   background: #e3f2fd;
 }
 
+
 .blue h1 {
   color: #0d47a1;
 }
+
 
 .blue button {
   background-color: #2196f3;
 }
 
+
 .blue button:hover {
   background-color: #1976d2;
 }
+
 
 .blue .logout-btn {
   background-color: #1565c0;
 }
 
+
 .blue .logout-btn:hover {
   background-color: #0d47a1;
 }
+
 
 /* Green Theme */
 .green .app-container {
   background: #e8f5e9;
 }
 
+
 .green h1 {
   color: #2e7d32;
 }
+
 
 .green button {
   background-color: #4caf50;
 }
 
+
 .green button:hover {
   background-color: #388e3c;
 }
+
 
 .green .logout-btn {
   background-color: #2e7d32;
 }
 
+
 .green .logout-btn:hover {
   background-color: #1b5e20;
 }
+
 
 /* Pink Theme */
 .pink .app-container {
   background: #fce4ec;
 }
 
+
 .pink h1 {
   color: #ad1457;
 }
+
 
 .pink button {
   background-color: #ec407a;
 }
 
+
 .pink button:hover {
   background-color: #d81b60;
 }
+
 
 .pink .logout-btn {
   background-color: #c2185b;
 }
 
+
 .pink .logout-btn:hover {
   background-color: #880e4f;
 }
+
 
 /* Theme/Dark Mode Controls */
 .theme-controls {
   margin-top: 20px;
 }
+
 
 .theme-controls select,
 .theme-controls button {
@@ -273,7 +415,7 @@ p:hover {
   font-size: 14px;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 600px) {
   .app-container {
@@ -281,10 +423,12 @@ p:hover {
     width: 95%;
   }
 
+
   .input-container {
     flex-direction: column;
     gap: 15px;
   }
+
 
   input[type="text"], 
   input[type="password"], 
@@ -293,17 +437,43 @@ p:hover {
   select {
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box; /* ensures padding and border are included in width */
+    box-sizing: border-box;
   }
+
 
   .task-list li {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    padding: 15px;
   }
 
-  .task-list button {
-    margin-top: 8px;
+
+  .task-content {
+    text-align: center;
+    margin-bottom: 15px;
   }
+
+
+  .task-actions {
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+
+  .task-actions button {
+    flex: 1;
+    min-width: 60px;
+    margin: 2px;
+  }
+
+
+  .move-btn {
+    min-width: 50px;
+    height: 40px;
+    font-size: 16px;
+  }
+
 
   .login-container,
   .todo-container {
@@ -312,11 +482,13 @@ p:hover {
     box-sizing: border-box;
   }
 
+
   .task-input {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
   }
+
 
   .add-task-button,
   .login-button {
@@ -326,3 +498,16 @@ p:hover {
   }
 }
 
+
+@media (max-width: 400px) {
+  .task-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+
+  .task-actions button {
+    width: 100%;
+    margin: 2px 0;
+  }
+}
