@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import confetti from 'canvas-confetti';
 
+
 function App() {
   const [rollNumber, setRollNumber] = useState('');
   const [password, setPassword] = useState('');
@@ -14,10 +15,12 @@ function App() {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
+
   useEffect(() => {
     const storedRollNumber = localStorage.getItem('rollNumber');
     const storedTheme = localStorage.getItem('theme');
     const storedDarkMode = localStorage.getItem('darkMode');
+
 
     if (storedRollNumber) {
       setRollNumber(storedRollNumber);
@@ -28,12 +31,14 @@ function App() {
     if (storedDarkMode) setDarkMode(JSON.parse(storedDarkMode));
   }, []);
 
+
   const fetchTasks = (userRoll) => {
     fetch(`https://todo-list-5-bc98.onrender.com/api/todos/${userRoll}`)
       .then(res => res.json())
       .then(data => setTasks(data))
       .catch(err => console.error('Error fetching tasks:', err));
   };
+
 
   const handleLogin = () => {
     fetch('https://todo-list-5-bc98.onrender.com/api/login', {
@@ -53,6 +58,7 @@ function App() {
       });
   };
 
+
   const handleRegister = () => {
     fetch('https://todo-list-5-bc98.onrender.com/api/register', {
       method: 'POST',
@@ -70,6 +76,7 @@ function App() {
       });
   };
 
+
   const handleLogout = () => {
     localStorage.removeItem('rollNumber');
     setRollNumber('');
@@ -77,6 +84,7 @@ function App() {
     setIsLoggedIn(false);
     setTasks([]);
   };
+
 
   const addTask = () => {
     const storedRollNumber = localStorage.getItem('rollNumber');
@@ -100,6 +108,7 @@ function App() {
     }
   };
 
+
   const deleteTask = (id) => {
     const storedRollNumber = localStorage.getItem('rollNumber');
     fetch(`https://todo-list-5-bc98.onrender.com/api/todo/${id}`, {
@@ -107,6 +116,7 @@ function App() {
     })
       .then(() => fetchTasks(storedRollNumber));
   };
+
 
   const toggleTask = (id) => {
     const storedRollNumber = localStorage.getItem('rollNumber');
@@ -117,6 +127,7 @@ function App() {
         task._id === id ? { ...task, completed: !task.completed } : task
       );
       setTasks(updatedTasks);
+
 
       const completedTask = updatedTasks.find(task => task._id === id && task.completed);
       if (completedTask) {
@@ -129,15 +140,34 @@ function App() {
     });
   };
 
+  const moveTaskUp = (index) => {
+    if (index > 0) {
+      const newTasks = [...tasks];
+      [newTasks[index], newTasks[index - 1]] = [newTasks[index - 1], newTasks[index]];
+      setTasks(newTasks);
+    }
+  };
+
+  const moveTaskDown = (index) => {
+    if (index < tasks.length - 1) {
+      const newTasks = [...tasks];
+      [newTasks[index], newTasks[index + 1]] = [newTasks[index + 1], newTasks[index]];
+      setTasks(newTasks);
+    }
+  };
+
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     localStorage.setItem('darkMode', JSON.stringify(!darkMode));
   };
 
+
   const changeTheme = (newTheme) => {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   };
+
 
   if (!isLoggedIn) {
     return (
@@ -179,6 +209,7 @@ function App() {
     );
   }
 
+
   return (
     <div className={`app-container ${darkMode ? 'dark-mode' : ''} ${theme}`}>
       <h1>Todo List</h1>
@@ -206,8 +237,10 @@ function App() {
         {tasks.length === 0 ? (
           <li>No tasks added yet.</li>
         ) : (
-          tasks.map((todo) => (
+          tasks.map((todo, index) => (
             <li key={todo._id} className={todo.completed ? 'completed' : ''}>
+              <button onClick={() => moveTaskUp(index)} disabled={index === 0}>↑</button>
+              <button onClick={() => moveTaskDown(index)} disabled={index === tasks.length - 1}>↓</button>
               {todo.task} — {todo.date} {todo.time}
               <button onClick={() => toggleTask(todo._id)}>Toggle</button>
               <button className="delete-btn" onClick={() => deleteTask(todo._id)}>Delete</button>
@@ -227,5 +260,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
