@@ -23,8 +23,8 @@ if not MONGO_URI:
     raise EnvironmentError("MONGO_URI environment variable not set. Please create a .env file and add it.")
 
 # 3. Connect to MongoDB using the variable
-db = client['todo_db']
 client = MongoClient(MONGO_URI)
+db = client['todo_db']
 users_collection = db['users']
 tasks_collection = db['tasks']
 
