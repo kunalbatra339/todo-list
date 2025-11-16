@@ -4,17 +4,26 @@ from pymongo import MongoClient
 from bson import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 import time
+import os  # <-- Import os to access environment variables
+from dotenv import load_dotenv  # <-- Import dotenv to load the .env file
 
+# Load environment variables from a .env file
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
+# --- MongoDB Connection (Updated) ---
 
-# MongoDB Connection
-client = MongoClient("")
+# 1. Get the MongoDB URI from the environment variable
+MONGO_URI = os.environ.get('MONGO_URI')
 
+# 2. Optional but recommended: Check if the variable exists
+if not MONGO_URI:
+    raise EnvironmentError("MONGO_URI environment variable not set. Please create a .env file and add it.")
 
-db = client['todo_db']
+# 3. Connect to MongoDB using the variable
+client = MongoClient(MONGO_URI)
 users_collection = db['users']
 tasks_collection = db['tasks']
 
